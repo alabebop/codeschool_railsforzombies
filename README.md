@@ -55,14 +55,16 @@ zombie = Tweet.find(3)
 
 * CREATE
 	Three ways to create a new zombie tweet entry:
-	1) 
+	
+	1
 	
 		```ruby 
 		t = Tweet.new
 		t.status = "I <3 brains."
 		t.save
 		```
-	2)
+	
+	2
 
 		```ruby
 		t = Tweet.new(
@@ -72,7 +74,7 @@ zombie = Tweet.find(3)
 		t.save
 		``
 
-	3)
+	3
 
 		```ruby
 		Tweet.create(
