@@ -50,145 +50,145 @@ id | status | zombie
 
 #### 1. CREATE
 
-	Three ways to create a new zombie tweet entry:
-	
-	* verbose way
-	
-		```ruby 
-		t = Tweet.new
-		t.status = "I <3 brains."
-		t.save
-		```
-	
-	* less verbose way
+Three ways to create a new zombie tweet entry:
 
-		```ruby
-		t = Tweet.new(
-			status: "I <3 brains.",
-			zombie: "Jim"
-		)
-		t.save
-		```
+* verbose way
 
-	* compact way
+	```ruby 
+	t = Tweet.new
+	t.status = "I <3 brains."
+	t.save
+	```
 
-		```ruby
-		Tweet.create(
-			status: "I <3 brains.",
-			zombie: "Jim"
-		)
-		```
+* less verbose way
+
+	```ruby
+	t = Tweet.new(
+		status: "I <3 brains.",
+		zombie: "Jim"
+	)
+	t.save
+	```
+
+* compact way
+
+	```ruby
+	Tweet.create(
+		status: "I <3 brains.",
+		zombie: "Jim"
+	)
+	```
 
 #### 2. READ
 
-	* find by id
+* find by id
 
-		```ruby
-		Tweet.find(2)
-		```
+	```ruby
+	Tweet.find(2)
+	```
 
-	* find multiple by id
+* find multiple by id
 
-		```ruby
-		Tweet.find(2, 3, 4)
-		```
+	```ruby
+	Tweet.find(2, 3, 4)
+	```
 
-	* find the first, the last, find all
+* find the first, the last, find all
 
-		```ruby
-		Tweet.first
-		```
+	```ruby
+	Tweet.first
+	```
 
-		```ruby
-		Tweet.last
-		```
+	```ruby
+	Tweet.last
+	```
 
-		```ruby
-		Tweet.all
-		```
+	```ruby
+	Tweet.all
+	```
 
-	* count the number of entries
+* count the number of entries
 
-		```ruby
-		Tweet.count
-		```
+	```ruby
+	Tweet.count
+	```
 
-	* order the found entries by a certain key
+* order the found entries by a certain key
 
-		```ruby
-		Tweet.order(:zombie)
-		```
+	```ruby
+	Tweet.order(:zombie)
+	```
 
-	* return the first 10 entries
+* return the first 10 entries
 
-		```ruby
-		Tweet.limit(10)
-		```
+	```ruby
+	Tweet.limit(10)
+	```
 
-	* find all entries with a certain key-value pair
+* find all entries with a certain key-value pair
 
-		```ruby
-		Tweet.where(zombie: "ash")
-		```
+	```ruby
+	Tweet.where(zombie: "ash")
+	```
 
-	* chaining them together
-		
-		* To find the first zombie tweet by the zombie "ash":
+* chaining them together
+	
+	* To find the first zombie tweet by the zombie "ash":
 
-		```ruby
-		Tweet.where(zombie: "ash").first
-		```
+	```ruby
+	Tweet.where(zombie: "ash").first
+	```
 
-		* To find Ash's first ten tweet ordered by status:
+	* To find Ash's first ten tweet ordered by status:
 
-		```ruby
-		Tweet.where(zombie: "ash").order(:status).limit(10)
-		```
+	```ruby
+	Tweet.where(zombie: "ash").order(:status).limit(10)
+	```
 
 #### 3. UPDATE
 
-	* verbose way
+* verbose way
 
-		```ruby
-		t = Tweet.find(3)
-		t.zombie = "EyeballChomper"
-		t.save
-		```
+	```ruby
+	t = Tweet.find(3)
+	t.zombie = "EyeballChomper"
+	t.save
+	```
 
-	* less verbose way
+* less verbose way
 
-		```ruby
-		t = Tweet.find(2)
-		t.attributes = {
-			status: "Can I munch your eyeballs?",
-			zombie: "EyeballChomper"
-		}
-		```
+	```ruby
+	t = Tweet.find(2)
+	t.attributes = {
+		status: "Can I munch your eyeballs?",
+		zombie: "EyeballChomper"
+	}
+	```
 
-	* compact way
+* compact way
 
-		```ruby
-		t = Tweet.find(2)
-		t.update(
-			status: "Can I munch your eyeballs?",
-			zombie: "EyeballChomper"
-		)
-		```
+	```ruby
+	t = Tweet.find(2)
+	t.update(
+		status: "Can I munch your eyeballs?",
+		zombie: "EyeballChomper"
+	)
+	```
 
 #### 4. DELETE
 
-	* delete one
+* delete one
 
-		```ruby
-		t = Tweet.find(2)
-		t.destroy
-		```
+	```ruby
+	t = Tweet.find(2)
+	t.destroy
+	```
 
-	* delete all
+* delete all
 
-		```ruby
-		Tweet.destroy_all
-		```
+	```ruby
+	Tweet.destroy_all
+	```
 
 
 
