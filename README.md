@@ -69,7 +69,7 @@ id | status | zombie
 			zombie: "Jim"
 		)
 		t.save
-		``
+		```
 
 	* compact way
 
@@ -78,7 +78,7 @@ id | status | zombie
 			status: "I <3 brains.",
 			zombie: "Jim"
 		)
-		``
+		```
 
 * READ
 
