@@ -49,6 +49,7 @@ id | status | zombie
 4  | OMG, my fingers turned green. #FML | Ash 
 
 * CREATE
+
 	Three ways to create a new zombie tweet entry:
 	
 	* verbose way
