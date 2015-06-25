@@ -143,3 +143,62 @@ id | status | zombie
 		```ruby
 		Tweet.where(zombie: "ash").order(:status).limit(10)
 		```
+
+* UPDATE
+
+	* verbose way
+
+		```ruby
+		t = Tweet.find(3)
+		t.zombie = "EyeballChomper"
+		t.save
+		```
+
+	* less verbose way
+
+		```ruby
+		t = Tweet.find(2)
+		t.attributes = {
+			status: "Can I munch your eyeballs?",
+			zombie: "EyeballChomper"
+		}
+		```
+
+	* compact way
+
+		```ruby
+		t = Tweet.find(2)
+		t.update(
+			status: "Can I munch your eyeballs?",
+			zombie: "EyeballChomper"
+		)
+		```
+
+* DELETE
+
+	* delete one
+
+		```ruby
+		t = Tweet.find(2)
+		t.destroy
+		```
+
+	* delete all
+
+		```ruby
+		Tweet.destroy_all
+		```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
