@@ -1,5 +1,5 @@
 # Rails for Zombies Play through
-Notes from the code school workshop rails for zombies
+Notes from the code school workshop [rails for zombies](http://railsforzombies.org/)
 
 ## Level 1 DEEP IN THE CRUD
 
@@ -49,10 +49,6 @@ id | status | zombie
 2  | My left arm is missing, but I don't care | Bob
 3  | I just ate some delicious brains | Jim
 4  | OMG, my fingers turned green. #FML | Ash 
-
-* Accessing tables
-
-zombie = Tweet.find(3)
 
 * CREATE
 	Three ways to create a new zombie tweet entry:
