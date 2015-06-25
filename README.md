@@ -52,7 +52,7 @@ id | status | zombie
 
 Three ways to create a new zombie tweet entry:
 
-* verbose way
+1. verbose way
 
 	```ruby 
 	t = Tweet.new
@@ -60,7 +60,7 @@ Three ways to create a new zombie tweet entry:
 	t.save
 	```
 
-* less verbose way
+2. less verbose way
 
 	```ruby
 	t = Tweet.new(
@@ -70,7 +70,7 @@ Three ways to create a new zombie tweet entry:
 	t.save
 	```
 
-* compact way
+3. compact way
 
 	```ruby
 	Tweet.create(
@@ -81,19 +81,19 @@ Three ways to create a new zombie tweet entry:
 
 #### 2. READ
 
-* find by id
+1. find by id
 
 	```ruby
 	Tweet.find(2)
 	```
 
-* find multiple by id
+2. find multiple by id
 
 	```ruby
 	Tweet.find(2, 3, 4)
 	```
 
-* find the first, the last, find all
+3. find the first, the last, find all
 
 	```ruby
 	Tweet.first
@@ -107,31 +107,31 @@ Three ways to create a new zombie tweet entry:
 	Tweet.all
 	```
 
-* count the number of entries
+4. count the number of entries
 
 	```ruby
 	Tweet.count
 	```
 
-* order the found entries by a certain key
+5. order the found entries by a certain key
 
 	```ruby
 	Tweet.order(:zombie)
 	```
 
-* return the first 10 entries
+6. return the first 10 entries
 
 	```ruby
 	Tweet.limit(10)
 	```
 
-* find all entries with a certain key-value pair
+7. find all entries with a certain key-value pair
 
 	```ruby
 	Tweet.where(zombie: "ash")
 	```
 
-* chaining them together
+8. chaining them together
 	
 	* To find the first zombie tweet by the zombie "ash":
 
@@ -147,7 +147,7 @@ Three ways to create a new zombie tweet entry:
 
 #### 3. UPDATE
 
-* verbose way
+1. verbose way
 
 	```ruby
 	t = Tweet.find(3)
@@ -155,7 +155,7 @@ Three ways to create a new zombie tweet entry:
 	t.save
 	```
 
-* less verbose way
+2. less verbose way
 
 	```ruby
 	t = Tweet.find(2)
@@ -165,7 +165,7 @@ Three ways to create a new zombie tweet entry:
 	}
 	```
 
-* compact way
+3. compact way
 
 	```ruby
 	t = Tweet.find(2)
@@ -177,14 +177,14 @@ Three ways to create a new zombie tweet entry:
 
 #### 4. DELETE
 
-* delete one
+1. delete one
 
 	```ruby
 	t = Tweet.find(2)
 	t.destroy
 	```
 
-* delete all
+2. delete all
 
 	```ruby
 	Tweet.destroy_all
