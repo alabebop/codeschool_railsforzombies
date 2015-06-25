@@ -39,8 +39,6 @@ Notes from the code school workshop [rails for zombies](http://railsforzombies.o
 
 The zombie database structure:
 
-![Zombie database](./zombie_db.png)
-
 #### tweets
 
 id | status | zombie
