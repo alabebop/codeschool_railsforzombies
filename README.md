@@ -48,7 +48,7 @@ id | status | zombie
 3  | I just ate some delicious brains | Jim
 4  | OMG, my fingers turned green. #FML | Ash 
 
-#### 1. CREATE
+#### I. CREATE
 
 Three ways to create a new zombie tweet entry:
 
@@ -79,7 +79,7 @@ Three ways to create a new zombie tweet entry:
 	)
 	```
 
-#### 2. READ
+#### II. READ
 
 1. find by id
 
@@ -145,7 +145,7 @@ Three ways to create a new zombie tweet entry:
 	Tweet.where(zombie: "ash").order(:status).limit(10)
 	```
 
-#### 3. UPDATE
+#### III. UPDATE
 
 1. verbose way
 
@@ -175,7 +175,7 @@ Three ways to create a new zombie tweet entry:
 	)
 	```
 
-#### 4. DELETE
+#### IV. DELETE
 
 1. delete one
 
