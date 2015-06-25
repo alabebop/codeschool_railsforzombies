@@ -81,57 +81,59 @@ Three ways to create a new zombie tweet entry:
 
 #### II. READ
 
-1. find by id
+1. Find
 
-	```ruby
-	Tweet.find(2)
-	```
+	1. find by id
 
-2. find multiple by id
+		```ruby
+		Tweet.find(2)
+		```
 
-	```ruby
-	Tweet.find(2, 3, 4)
-	```
+	2. find multiple by id
 
-3. find the first, the last, find all
+		```ruby
+		Tweet.find(2, 3, 4)
+		```
 
-	```ruby
-	Tweet.first
-	```
+	3. find the first, the last, find all
 
-	```ruby
-	Tweet.last
-	```
+		```ruby
+		Tweet.first
+		```
 
-	```ruby
-	Tweet.all
-	```
+		```ruby
+		Tweet.last
+		```
 
-4. count the number of entries
+		```ruby
+		Tweet.all
+		```
+
+2. count the number of entries
 
 	```ruby
 	Tweet.count
 	```
 
-5. order the found entries by a certain key
+3. order the found entries by a certain key
 
 	```ruby
 	Tweet.order(:zombie)
 	```
 
-6. return the first 10 entries
+4. return the first 10 entries
 
 	```ruby
 	Tweet.limit(10)
 	```
 
-7. find all entries with a certain key-value pair
+5. find all entries with a certain key-value pair
 
 	```ruby
 	Tweet.where(zombie: "ash")
 	```
 
-8. chaining them together
+6. chaining them together
 	
 	* To find the first zombie tweet by the zombie "ash":
 
