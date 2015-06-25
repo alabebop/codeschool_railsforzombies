@@ -42,8 +42,9 @@ The zombie database structure:
 ![Zombie database](./zombie_db.png)
 
 #### tweets
+
 id | status | zombie
--- | ------ | ------
+---|--------|-------
 1  | Where can I get a good bite to eat? | Ash
 2  | My left arm is missing, but I don't care | Bob
 3  | I just ate some delicious brains | Jim
@@ -56,7 +57,7 @@ zombie = Tweet.find(3)
 * CREATE
 	Three ways to create a new zombie tweet entry:
 	
-	*
+	* verbose way
 	
 		```ruby 
 		t = Tweet.new
@@ -64,7 +65,7 @@ zombie = Tweet.find(3)
 		t.save
 		```
 	
-	*
+	* less verbose way
 
 		```ruby
 		t = Tweet.new(
@@ -74,7 +75,7 @@ zombie = Tweet.find(3)
 		t.save
 		``
 
-	*
+	* compact way
 
 		```ruby
 		Tweet.create(
