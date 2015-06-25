@@ -115,7 +115,7 @@ Three ways to create a new zombie tweet entry:
 	Tweet.count
 	```
 
-3. order the found entries by a certain key
+3. order entries by a certain key value
 
 	```ruby
 	Tweet.order(:zombie)
