@@ -7,7 +7,7 @@ Notes from the code school workshop rails for zombies
 
 * Hash
 
-	```
+	```ruby
 	b = {
 		id: 3,
 		status: "I ate some brains",
