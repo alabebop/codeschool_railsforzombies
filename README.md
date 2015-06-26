@@ -192,7 +192,11 @@ Three ways to create a new zombie tweet entry:
 	Tweet.destroy_all
 	```
 
+## Level 2 MODELS TASTE LIKE CHICKEN
 
+## Level 3 THE VIEWS AIN'T ALWAYS PRETTY
+
+## Level 4 CONTROLLERS MUST BE EATEN
 
 
 
