@@ -449,6 +449,7 @@ View is the visual representation of an application.
 			<header>...</header>
 			<%= yield %>
 		</body>
+	</html>
 	```
 	
 	The `yield` denotes the place where the content defined in each page template will be inserted.
@@ -465,9 +466,9 @@ View is the visual representation of an application.
 
 3. template helpers 
 
-	* (1) `link_to`
+	* `link_to`
 
-		The `link_to` helper creates a link with the following signature:
+		The *link_to* helper creates a link with the following signature:
 
 		```erb
 		<%= link_to link_text, destination_object %>
@@ -485,58 +486,60 @@ View is the visual representation of an application.
 		<p>Posted by <a href="/zombies/1">Ash</a></p>
 		```
 
-		* Options for the `link_to` helper:
+		Options for the `link_to` helper:
 
-			* `:class =>` class name
+		* `:class =>` class name
 
-				e.g.:
+			e.g.:
 
-				```erb
-				<%= link_to "Edit", @user, :class => "edit-button" %>
-				```
+			```erb
+			<%= link_to "Edit", edit_user_path(user), :class => "edit-button" %>
+			```
 
-				renders to:
+			renders to:
 
-				```html
-				<a href="/users/1" class="edit-button">Edit</a>
-				```
+			```html
+			<a href="/users/1/edit" class="edit-button">Edit</a>
+			```
 
-			* `method:` symbol of HTTP verb - assign a HTTP method for the link
-				e.g. to delete the tweet with id 1 which we found earlier in a tag marker without equals:
+		* `method:` symbol of HTTP verb - assign a HTTP method for the link
 
-				```erb
-				<%= link_to "Delete", tweet, :method => :delete %>
-				```
+			e.g. to delete the tweet with id 1, which we found earlier in a tag marker without equals:
 
-				then the following html will be rendered to page:
+			```erb
+			<%= link_to "Delete", tweet, :method => :delete %>
+			```
 
-				```html
-				<a rel="nofollow" data-method="delete" href="tweets/1">Delete</a>
-				```
+			then the following html will be rendered to page:
 
-				* supported verbs 
-					> :post, :delete, :patch, :put
+			```html
+			<a rel="nofollow" data-method="delete" href="tweets/1">Delete</a>
+			```
+
+			* supported verbs 
+
+				> :post, :delete, :patch, :put
 
 
-			* `:data => ` hash - adds custom data attributes to html, some can trigger JS functions automatically
+		* `:data => ` hash - adds custom data attributes to html, some can trigger JS functions automatically
 
-				e.g. a confirm popup with message "Are you sure?" for the delete link:
+			e.g. a confirm popup with message "Are you sure?" for the delete link:
 
-				```erb
-				<%= link_to "Delete", tweet, :method => :delete, 
-					:data => {confirm: "Are you sure?"} %>
-				```
+			```erb
+			<%= link_to "Delete", tweet, :method => :delete, 
+				:data => {confirm: "Are you sure?"} %>
+			```
 
-				will be rendered as
+			will be rendered as
 
-				```html
-				<a href="/tweets/1" data-method="delete" 
-					data-confirm="Are you sure?">Delete</a>
-				```
+			```html
+			<a href="/tweets/1" data-method="delete" 
+				data-confirm="Are you sure?">Delete</a>
+			```
 
-				And clicking the delete link will first popup a JS confirm box with the message "Are you sure?"
+			And clicking the delete link will first popup a JS confirm box with the message "Are you sure?"
 
-			
+
 
 ## Level 4 CONTROLLERS MUST BE EATEN
 
