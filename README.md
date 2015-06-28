@@ -210,12 +210,13 @@ is the way how your Rails application communicates with a data store.
 	This Tweet class then maps to the tweets table
 
 	* tweets
-	id | status | zombie
-	---|--------|--------
-	1  | Where can I get a good bite to | Ash
-	2  | My left arm is missing, but I  | Bob
-	3  | I just ate some delicious      | Jim
-	4  | OMG, my fingers turned green.  | Ash
+	
+		id | status | zombie
+		---|--------|--------
+		1  | Where can I get a good bite to | Ash
+		2  | My left arm is missing, but I  | Bob
+		3  | I just ate some delicious      | Jim
+		4  | OMG, my fingers turned green.  | Ash
 
 2. Validations
 
