@@ -194,6 +194,40 @@ Three ways to create a new zombie tweet entry:
 
 ## Level 2 MODELS TASTE LIKE CHICKEN
 
+### Model 
+is the way how your Rails application communicates with a data store.
+
+1. To define a Model class
+
+	```ruby
+	class Tweet < ActiveRecord::Base
+
+	end
+	```
+
+	`<` is for `extends`
+
+	This Tweet class then maps to the tweets table
+
+	* tweets
+	id | status | zombie
+	---|--------|--------
+	1  | Where can I get a good bite to | Ash
+	2  | My left arm is missing, but I  | Bob
+	3  | I just ate some delicious      | Jim
+	4  | OMG, my fingers turned green.  | Ash
+
+2. Validations
+
+	
+
+### Relationships
+
+1. Relational Database
+
+2. Using relationships
+
+
 ## Level 3 THE VIEWS AIN'T ALWAYS PRETTY
 
 ## Level 4 CONTROLLERS MUST BE EATEN
