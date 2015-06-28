@@ -207,10 +207,10 @@ is the way how your Rails application communicates with a data store.
 
 	`<` is for `extends`
 
-	This Tweet class then maps to the tweets table
+	This `Tweet` class then maps to the `tweets` table
 
 	* tweets
-	
+
 		id | status | zombie
 		---|--------|--------
 		1  | Where can I get a good bite to | Ash
@@ -218,9 +218,66 @@ is the way how your Rails application communicates with a data store.
 		3  | I just ate some delicious      | Jim
 		4  | OMG, my fingers turned green.  | Ash
 
-2. Validations
 
-	
+2. Validations
+	We don't want empty records to be saved in the database, so we add validation code in our model class:
+
+	```ruby
+	class Tweet < ActiveRecord::Base
+		validates_presence_of :status
+	end
+	```
+
+	* Now trying to save an empty record will give you an error
+
+		```
+		>> t = Tweet.new
+			=> #<Tweet id: nil, status: nil, zombie: nil>
+		>> t.save
+			=> false
+		>> t.errors.messages
+			=> {status: ["can't be blank"]}
+		>> t.errors[:status][0]
+			=> "can't be blank"
+		```	
+
+	* Other validation possibilities:
+		* presence, numeric, unique:
+
+			```ruby
+			validates_presence_of :status
+			validates_numericality_of :fingers
+			validates_uniqueness_of :toothmarks
+			```
+		* special pattern: confirmation pairs
+		
+			```ruby		
+			validates_confirmation_of :password		# to validate if two input fields (one of which is a confirm field like it is often the case with password or email fields) are matched
+			```
+
+		* requires a checkbox to be checked
+
+			```ruby
+			validates_acceptance_of :zombification	# to validate if a checkbox is checked
+			```
+
+		* validate length
+
+			```ruby
+			validates_length_of :password, minimum: 3
+			```
+
+		* validates format
+
+			```ruby	
+			validates_format_of :email, with: /regex/i  # provide a regular expression to validate email
+			```
+
+		* validates number range
+			```ruby
+			validates_inclusion_of :age, in: 21..99
+			validates_exclusion_of :age, in: 0...21, message: "Sorry, you must be over 21"
+			```
 
 ### Relationships
 
