@@ -258,6 +258,24 @@ is the way how your Rails application communicates with a data store.
 													# like in the case of a password or email) 
 			```
 
+			An example usage
+
+			in `Model`:
+
+			```ruby
+			class Person < ActiveRecord::Base
+				validates_confirmation_of :password, message: "should match"
+				validates_presence_of :password_confirmation, if: :password_changed?
+			end
+			```
+
+			in `View`:
+
+			```ruby
+			<%= password_field "person", "password" %>
+			<%= password_field "person", "password_confirmation" %>
+			```
+
 		* requires a checkbox to be checked
 
 			```ruby
