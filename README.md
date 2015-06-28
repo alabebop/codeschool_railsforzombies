@@ -194,7 +194,7 @@ Three ways to create a new zombie tweet entry:
 
 ## Level 2 MODELS TASTE LIKE CHICKEN
 
-### Model 
+### I. Model 
 is the way how your Rails application communicates with a data store.
 
 1. To define a Model class
@@ -323,7 +323,7 @@ is the way how your Rails application communicates with a data store.
 				confirmation: true
 		```
 
-### Relationships
+### II. Relationships
 
 1. Relational Database
 
@@ -396,6 +396,147 @@ is the way how your Rails application communicates with a data store.
 		```
 
 ## Level 3 THE VIEWS AIN'T ALWAYS PRETTY
+
+### I. View
+
+View is the visual representation of an application. 
+
+1. Rails view folder structure
+
+	```
+	zombie_twitter
+		|_ app
+			|_ views
+				|_ layouts
+				|	|_ application.html.erb 	# reused template
+				|_ zombies
+				|_ tweets
+					|_ index.html.erb 	# list all tweets
+					|_ show.html.erb 	# show a single tweet
+	```	
+
+2. ERB templating (.html.erb files)
+	
+	* `erb` stands for **E**mbedded **R**u**b**y
+
+	* tag markers
+		
+		* `<% ... %>`: 
+			Tags without the equals sign denote that the enclosed code is a *scriptlet*. Scriplets are caught and executed, the result can be used in following part of the template. Nothing will be rendered on the html page.
+
+			```html
+			<% tweet = Tweet.find(5) %>
+			```
+		
+		* `<%= ... %>`:
+			Tags with the equals sign indicates that enclosed is an *expression*, and that the result of the code as a string will be rendered on the page.
+
+			```html
+			<p>Posted by zombie <%= tweet.zombie %></p>
+			```
+
+### II. ERB Templates in a Rails Application
+
+1. the HTML `application` (a reused html wrapper) in the `layout` folder
+
+	`/app/views/layouts/application.html.erb`
+	
+	```erb
+	<!DOCTYPE html>
+	<html>
+		<head><title>Twiiter for Zombies</title></head>
+		<body>
+			<header>...</header>
+			<%= yield %>
+		</body>
+	```
+	
+	The `yield` denotes the place where the content defined in each page template will be inserted.
+
+2. a single page template, e.g. the `tweets/show` template that defines the page showing one single tweet
+
+	`/app/views/tweets/show.html.erb`
+
+	```erb
+	<% tweet = Tweet.find(1) %>
+	<h1><%= tweet.status %></h1>
+	<p>Posted by <%= tweet.zombie.name %></p>
+	```
+
+3. template helpers 
+
+	* (1) `link_to`
+
+		The `link_to` helper creates a link with the following signature:
+
+		```erb
+		<%= link_to link_text, destination_object %>
+		```
+
+		Example:
+
+		```erb
+		<p>Posted by <%= link_to tweet.zombie.name, tweet.zombie %></p>
+	
+		```
+		renders to
+
+		```html
+		<p>Posted by <a href="/zombies/1">Ash</a></p>
+		```
+
+		* Options for the `link_to` helper:
+
+			* `:class =>` class name
+
+				e.g.:
+
+				```erb
+				<%= link_to "Edit", @user, :class => "edit-button" %>
+				```
+
+				renders to:
+
+				```html
+				<a href="/users/1" class="edit-button">Edit</a>
+				```
+
+			* `method:` symbol of HTTP verb - assign a HTTP method for the link
+				e.g. to delete the tweet with id 1 which we found earlier in a tag marker without equals:
+
+				```erb
+				<%= link_to "Delete", tweet, :method => :delete %>
+				```
+
+				then the following html will be rendered to page:
+
+				```html
+				<a rel="nofollow" data-method="delete" href="tweets/1">Delete</a>
+				```
+
+				* supported verbs 
+					> :post, :delete, :patch, :put
+
+
+			* `:data => ` hash - adds custom data attributes to html, some can trigger JS functions automatically
+
+				e.g. a confirm popup with message "Are you sure?" for the delete link:
+
+				```erb
+				<%= link_to "Delete", tweet, :method => :delete, 
+					:data => {confirm: "Are you sure?"} %>
+				```
+
+				will be rendered as
+
+				```html
+				<a href="/tweets/1" data-method="delete" 
+					data-confirm="Are you sure?">Delete</a>
+				```
+
+				And clicking the delete link will first popup a JS confirm box with the message "Are you sure?"
+
+			
 
 ## Level 4 CONTROLLERS MUST BE EATEN
 
