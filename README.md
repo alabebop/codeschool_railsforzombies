@@ -220,6 +220,7 @@ is the way how your Rails application communicates with a data store.
 
 
 2. Validations
+
 	We don't want empty records to be saved in the database, so we add validation code in our model class:
 
 	```ruby
@@ -252,7 +253,9 @@ is the way how your Rails application communicates with a data store.
 		* special pattern: confirmation pairs
 		
 			```ruby		
-			validates_confirmation_of :password		# to validate if two input fields (one of which is a confirm field like it is often the case with password or email fields) are matched
+			validates_confirmation_of :password		# to validate if two input fields are matched
+													# (one of which is a confirmation field 
+													# like in the case of a password or email) 
 			```
 
 		* requires a checkbox to be checked
@@ -270,7 +273,8 @@ is the way how your Rails application communicates with a data store.
 		* validates format
 
 			```ruby	
-			validates_format_of :email, with: /regex/i  # provide a regular expression to validate email
+			validates_format_of :email, with: /regex/i  # provide a regular expression 
+														# to validate email
 			```
 
 		* validates number range
