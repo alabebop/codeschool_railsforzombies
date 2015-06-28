@@ -480,7 +480,7 @@ View is the visual representation of an application.
 		</ul>
 		```
 
-	* Conditional: `if`, `elsif, `else`
+	* Conditional: `if`, `elsif`, `else`
 
 		```erb
 		<% if Tweet.all.size == 0 %>
@@ -497,7 +497,7 @@ View is the visual representation of an application.
 		The *link_to* helper creates a link with the following signature:
 
 		```erb
-		<%= link_to link_text, destination_object %>
+		<%= link_to link_text, link_destination [, options] %>
 		```
 
 		Example:
