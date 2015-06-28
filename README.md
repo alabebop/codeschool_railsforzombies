@@ -327,6 +327,42 @@ is the way how your Rails application communicates with a data store.
 
 1. Relational Database
 
+	We have the tweets table, now we store zombies in their own table with unique ids and graveyard information. The two tables now have a _relationship_:
+
+	> each zombie `has_many` tweets
+	> each tweet `belongs_to` a zombie
+
+	Now the zombies show up in the tweets table with their unique id *zombie_id*, with which we can find the very zombie in the zombies table.
+
+	* zombies
+
+		id | name | graveyard
+		---|------|-----------
+		1 | Ash | Glen Haven Memorial Cemetery
+		2 | Bob | Chapel Hill Cemetery
+		3 | Jim | My Father's Basement
+
+		```ruby
+		class Zombie < ActiveRecord::Base
+			has_many :tweets
+		end
+		```
+
+	* tweets
+
+		id | status | zombie_id
+		---|--------|-----------
+		1 | Where can I get a good bite to eat? | 1
+		2 | My left arm is missing, but I don't care | 2
+		3 | I ust ate some delicious brains. | 3
+		4 | OMG, my fingers turned green. #FML | 1
+
+		```ruby
+		class Tweet < ActiveRecord::Base
+			belongs_to :zombie
+		end
+		```
+
 2. Using relationships
 
 
