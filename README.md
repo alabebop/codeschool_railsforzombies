@@ -368,6 +368,32 @@ is the way how your Rails application communicates with a data store.
 
 2. Using relationships
 
+	* Pass a zombie when creating a new tweet
+ 
+		```ruby
+		> ash = Zombie.find(1)
+			=> #<Zombie id: 1, name: "Ash", graveyard: "Glen Haven Memorial Cemetery">
+		> ash.tweets.count
+			=> 2
+		> t = Tweet.create(status: "Your eyelids taste like bacon.", zombie: ash)
+			=> #<Tweet id: 5, status: "Your eyelids taste like bacon.", zombie_id: 1>
+		> ash.tweets
+			=> [
+				#<Tweet id: 1, status "Where can I get a good bite to eat?", zombie_id: 1>,
+				#<Tweet id: 4, status "OMG, my fingers turned green. #FML", zombie_id: 1>,
+				#<Tweet id: 5, status "Your eyelids taste like bacon.", zombie_id: 1>
+			]
+		```
+	* Get the zombie from an existing tweet
+
+		```ruby
+		> t = Tweet.find(5)
+			=> #<Tweet id: 5, status: "Your eyelid tastes like bacon.", zombie_id: 1>
+		> t.zombie
+			=> #<Zombie id: 1, name: "Ash", graveyard: "Glen Haven Memorial Cemetery">
+		> t.zombie.name
+			=> "Ash"
+		```
 
 ## Level 3 THE VIEWS AIN'T ALWAYS PRETTY
 
