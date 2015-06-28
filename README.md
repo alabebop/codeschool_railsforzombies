@@ -464,9 +464,35 @@ View is the visual representation of an application.
 	<p>Posted by <%= tweet.zombie.name %></p>
 	```
 
+	This part goes to the place denoted with `yield` in the **application.html.erb** layout template
+
 3. template helpers 
 
-	* `link_to`
+	* Loop: `[array].each do |[variable name to be used in the loop]|`
+
+		E.g., to list all tweets:
+
+		```erb
+		<ul>
+		<% Tweet.all.each do |tweet| %>
+			<li><%= tweet.status %>
+		<% end %>
+		</ul>
+		```
+
+	* Conditional: `if`, `elsif, `else`
+
+		```erb
+		<% if Tweet.all.size == 0 %>
+			<p>There's no tweets yet.</p>
+		<% elsif Tweet.all.size == 1 %>
+			<p>There is 1 tweet.</p>
+		<% else %>
+			<p>There are <%= Tweet.all.size %> tweets.</p>
+		<% end %>
+		```
+
+	* Build link: `link_to`
 
 		The *link_to* helper creates a link with the following signature:
 
@@ -477,67 +503,94 @@ View is the visual representation of an application.
 		Example:
 
 		```erb
-		<p>Posted by <%= link_to tweet.zombie.name, tweet.zombie %></p>
+		<p>Posted by <%= link_to tweet.zombie.name, zombie_path(tweet.zombie) %></p>
 	
 		```
+
+		or with alternate syntax:
+
+		```erb
+		<p>Posted by <%= link_to tweet.zombie.name, tweet.zombie %></p>
+		```
+
 		renders to
 
 		```html
 		<p>Posted by <a href="/zombies/1">Ash</a></p>
 		```
 
-		Options for the `link_to` helper:
+		* Options for the `link_to` helper:
 
-		* `:class =>` class name
+			* `:class =>` class name
 
-			e.g.:
+				e.g.:
 
-			```erb
-			<%= link_to "Edit", edit_user_path(user), :class => "edit-button" %>
-			```
+				```erb
+				<%= link_to "Edit", edit_user_path(user), :class => "edit-button" %>
+				```
 
-			renders to:
+				renders to:
 
-			```html
-			<a href="/users/1/edit" class="edit-button">Edit</a>
-			```
+				```html
+				<a href="/users/1/edit" class="edit-button">Edit</a>
+				```
 
-		* `method:` symbol of HTTP verb - assign a HTTP method for the link
+			* `method:` symbol of HTTP verb - assign a HTTP method for the link
 
-			e.g. to delete the tweet with id 1, which we found earlier in a tag marker without equals:
+				e.g. to delete the tweet with id 1, which we found earlier in a tag marker without equals:
 
-			```erb
-			<%= link_to "Delete", tweet, :method => :delete %>
-			```
+				```erb
+				<%= link_to "Delete", tweet, :method => :delete %>
+				```
 
-			then the following html will be rendered to page:
+				then the following html will be rendered to page:
 
-			```html
-			<a rel="nofollow" data-method="delete" href="tweets/1">Delete</a>
-			```
+				```html
+				<a rel="nofollow" data-method="delete" href="tweets/1">Delete</a>
+				```
 
-			* supported verbs 
+				* supported verbs 
 
-				> :post, :delete, :patch, :put
+					> :post, :delete, :patch, :put
 
 
-		* `:data => ` hash - adds custom data attributes to html, some can trigger JS functions automatically
+			* `:data =>` hash - adds custom data attributes to html, some can trigger JS functions automatically
 
-			e.g. a confirm popup with message "Are you sure?" for the delete link:
+				e.g. a confirm popup with message "Are you sure?" for the delete link:
 
-			```erb
-			<%= link_to "Delete", tweet, :method => :delete, 
-				:data => {confirm: "Are you sure?"} %>
-			```
+				```erb
+				<%= link_to "Delete", tweet, :method => :delete, 
+					:data => {confirm: "Are you sure?"} %>
+				```
 
-			will be rendered as
+				will be rendered as
 
-			```html
-			<a href="/tweets/1" data-method="delete" 
-				data-confirm="Are you sure?">Delete</a>
-			```
+				```html
+				<a href="/tweets/1" data-method="delete" 
+					data-confirm="Are you sure?">Delete</a>
+				```
 
-			And clicking the delete link will first popup a JS confirm box with the message "Are you sure?"
+				And clicking the delete link will first popup a JS confirm box with the message "Are you sure?"
+
+			* `remote: true` - use AJAX submit instead of follow the link 
+
+		* Pre-cooked links we can use:
+
+			With the tweets table as our example:
+
+			action | code | link | template
+			-------|------|------|----------
+			list all tweets | `tweets_path` | "/tweets" | /app/views/tweets/index.html.erb
+			create new tweet | `new_tweet_path` | "/tweets/new" | /app/views/tweets/new.html.erb
+
+
+			With `tweet = Tweet.find(1)`:
+
+			action | code | link | template
+			-------|------|------|----------
+			show a tweet | `tweet` | "/tweets/1" | /app/views/tweets/show.html.erb
+			edit a tweet | `edit_tweet_path(tweet)` | "/tweets/1/edit" | /app/views/tweets/edit.html.erb
+			delete a tweet | `tweet, :method => :delete` | /tweets/1 | none
 
 
 
