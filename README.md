@@ -250,6 +250,7 @@ is the way how your Rails application communicates with a data store.
 			validates_numericality_of :fingers
 			validates_uniqueness_of :toothmarks
 			```
+		
 		* special pattern: confirmation pairs
 		
 			```ruby		
@@ -298,8 +299,29 @@ is the way how your Rails application communicates with a data store.
 		* validates number range
 			```ruby
 			validates_inclusion_of :age, in: 21..99
-			validates_exclusion_of :age, in: 0...21, message: "Sorry, you must be over 21"
+			validates_exclusion_of :age, in: 0...21, 
+				message: "Sorry, you must be over 21"
 			```
+
+	* Compact alternate syntax of validation
+
+		```ruby
+		validates :status, 
+					presence: true, 
+					length: { minimum: 3 }
+		```
+
+		Additional options
+
+		```ruby
+				presence: true
+				uniqueness: true
+				numericality: true
+				length: { minimum: 0, maximum: 2000 }
+				format: { with: /.*/ }
+				acceptance: true
+				confirmation: true
+		```
 
 ### Relationships
 
