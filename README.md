@@ -330,6 +330,9 @@ is the way how your Rails application communicates with a data store.
 	We have the tweets table, now we store zombies in their own table with unique ids and graveyard information. The two tables now have a _relationship_:
 
 	> each zombie `has_many` tweets
+
+	and
+
 	> each tweet `belongs_to` a zombie
 
 	Now the zombies show up in the tweets table with their unique id *zombie_id*, with which we can find the very zombie in the zombies table.
@@ -344,7 +347,7 @@ is the way how your Rails application communicates with a data store.
 
 		```ruby
 		class Zombie < ActiveRecord::Base
-			has_many :tweets
+			has_many :tweets	# plural!
 		end
 		```
 
@@ -359,7 +362,7 @@ is the way how your Rails application communicates with a data store.
 
 		```ruby
 		class Tweet < ActiveRecord::Base
-			belongs_to :zombie
+			belongs_to :zombie 		# singular!
 		end
 		```
 
