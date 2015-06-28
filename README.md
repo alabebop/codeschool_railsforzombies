@@ -253,7 +253,7 @@ is the way how your Rails application communicates with a data store.
 		* special pattern: confirmation pairs
 		
 			```ruby		
-			validates_confirmation_of :password		# to validate if two input fields are matched
+			validates_confirmation_of :password		# to validate if two input fields match
 													# (one of which is a confirmation field 
 													# like in the case of a password or email) 
 			```
